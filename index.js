@@ -116,24 +116,15 @@ inquirer.prompt([
     }
 
     const template = new Readme(projectTitle, projectDesc, projectInstall, projectUsage, projectContrib, projectTest, projectQuestions);
-    console.log(template.buildReadMe());
-//     `Project Title: ${projectTitle}
-// Project Description: ${projectDesc}
-// Project Installation Instruction: ${projectInstall}
-// Project Usage = ${projectUsage}
-// Project Contributions = ${projectContrib}
-// Project Test Instructions = ${projectTest}
-// Project Questions = ${projectQuestions}
-// `
         
-return [template, projectTitle]
+return [template.buildReadMe(), projectTitle]
 
 })
-// .then(([template, projectTitle]) => {
-//     fs.writeFileSync(`./readmes/${projectTitle}/README.md`, template, () => {
-//     });
+.then(([template, projectTitle]) => {
+    fs.writeFileSync(`./readmes/${projectTitle}/README.md`, template, () => {
+    });
 
-// })
+})
 .then(() => {
     console.log("success");
 })
