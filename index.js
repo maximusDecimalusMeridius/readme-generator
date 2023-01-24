@@ -28,7 +28,11 @@
 // Import required libraries
 const fs = require("fs");
 const inquirer = require("inquirer");
-const readmeTemplate = `# weather-tracker
+const util = require("util");
+
+const mkdir = util.promisify(fs.mkdir);
+const readmeTemplate = () => {
+    `# weather-tracker
 
 ## Description
 
@@ -63,8 +67,6 @@ Runs in the browser for mobile, tablet, laptop, and PC devices.
 
 You can visit the live application at - https://maximusdecimalusmeridius.github.io/weather-tracker.
 
-
-
 ![site-thumbnail](./assets/images/site-thumbnail.png "Website Thumbnail")
 
 ## Credits
@@ -80,6 +82,7 @@ This favicon was generated at favicon.io using the following font:
 - Font Source: http://fonts.gstatic.com/s/leckerlione/v16/V8mCoQH8VCsNttEnxnGQ-1itLZxcBtItFw.ttf
 - Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))
 `
+}
 
 //Get user input for Project Title, Description, Installation, Usage, License, Contributing, Tests, and Questions
 
@@ -87,42 +90,87 @@ inquirer.prompt([
     {
         type: "input",
         message: "Please enter your Project Title: ",
-        name: projectTitle
+        name: "projectTitle"
     },
     {
         type: "input",
         message: "Please enter a description: (or leave blank and press ENTER for placeholder text)",
-        name: projectDesc
+        name: "projectDesc"
     },
     {
         type: "input",
         message: "Please enter installation instructions: (leave blank and press ENTER for placeholder text)",
-        name: projectInstall
+        name: "projectInstall"
     },
     {
         type: "input",
         message: "Please enter usage information (leave blank and press ENTER for placeholder text)",
-        name: projectUsage
+        name: "projectUsage"
     },
     {
         type: "input",
         message: "Please enter any contribution instructions: ('N' to skip, or leave blank and press ENTER for default text)",
-        name: projectContrib
+        name: "projectContrib"
     },
     {
         type: "input",
         message: "Please enter any test instructions: ('N' to skip, or leave blank and press ENTER for default text)",
-        name: projectTest
+        name: "projectTest"
     }
 ]).then( answers => {
 
-    //Create a README.md file in a directory with the same project title as input above
     
-        //Set the project name as the title of the file
-        //Update description
-        //Update installation instructions
-        //Update usage information
-        //Update contribution instructions
-        //Update test instructions
+    //Get and clean input
+    const projectTitle = answers.projectTitle.trim();
+    mkdir(`./readmes/${projectTitle}`)
+    
+    //Update description
+    const projectDesc = (answers.projectDesc === "" ? `[PLACEHOLDER] Remember to update this text!` : answers.projectDesc);
 
+    //Update installation instructions
+    const projectInstall = (answers.projectInstall === "" ? `[PLACEHOLDER] Remember to update this text!` : answers.projectInstall);
+    
+    //Update usage information
+    const projectUsage = (answers.projectUsage === "" ? `[PLACEHOLDER] Remember to update this text!` : answers.projectUsage);
+
+    //Update contribution instructions
+    if(answers.projectContrib === ""){
+        var projectContrib = `[PLACEHOLDER] Remember to update this text!`
+    } else if(answers.projectContrib.toLowerCase() === "n"){
+        var projectContrib = null;
+    } else {
+        var projectContrib = answers.projectContrib;
+    }
+
+    //Update test instructions
+    if(answers.projectTest === ""){
+        var projectTest = `[PLACEHOLDER] Remember to update this text!`
+    } else if(answers.projectTest.toLowerCase() === "n"){
+        var projectTest = null;
+    } else {
+        var projectTest = answers.projectTest;
+    }
+
+    const template = `Project Title: ${projectTitle}
+Project Description: ${projectDesc}
+Project Installation Instruction: ${projectInstall}
+Project Usage = ${projectUsage}
+Project Contributions = ${projectContrib}
+Project Test Instructions = ${projectTest}
+`
+        
+return [template, projectTitle]
+    // .then(() => {
+        //     console.log("success");
+        //     fs.writeFile(`.readmes/${projectTitle}/README.md`, template, (error) => {
+        //         if(error){
+        //             console.log("Error writing file - please try again");
+        //         }
+        //     });
+        // })
+})
+.then(([template, projectTitle]) => {
+    fs.writeFileSync(`./readmes/${projectTitle}/README.md`, template, () => {
+        console.log("write success");
+    });
 })
