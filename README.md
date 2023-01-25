@@ -21,7 +21,7 @@ To install, download all files in the github repo.  You'll need to `npm init` an
 
 Run via the command line with `node index.js` and enter required information.  Once you see success in the console, you can find your README file in the readmes directory under the file folder with the same project title.
 
-***You can view the <span style="color: orange; font-weight: bold;">technical walkthrough</span> on YouTube @ [https://youtu.be/9Z8s_KzJJ-0](https://youtu.be/9Z8s_KzJJ-0)
+***You can view the <span style="color: orange; font-weight: bold;">technical walkthrough</span> on YouTube @ [https://youtu.be/UzrF78QIxRo](https://youtu.be/UzrF78QIxRo)
 
 ### Thumbnail of the user interaction via CLI  
 ![site-thumbnail](./project_thumbnails/cli-thumbnail.png "CLI Thumbnail")
