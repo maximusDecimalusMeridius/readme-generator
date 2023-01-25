@@ -35,7 +35,7 @@ MIT License - Please refer to the LICENSE in the repo.
 
 ## Questions
 
-You can view my Github Account @ https://www.github.com/maximusDecimalusMeridius  
+You can view my Github @ https://www.github.com/maximusDecimalusMeridius  
 OR  
 Email me @ [andygg_dev@yahoo.com](mailto:andygg_dev@yahoo.com?subject=Question%20About%20readme-generator%20App)
     
