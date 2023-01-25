@@ -68,12 +68,17 @@ inquirer.prompt([
         name: "projectTest"
     },
     {
+        type: "list",
+        message: "Please select a license",
+        choices: ["GNU GPL v3", "IBM Public License Version 1.0", "ISC License", "MIT License", "Mozilla Public License 2.0"],
+        name: "projectLicense"
+    },
+    {
         type: "input",
         message: "Please enter any questions: ('N' to skip, or leave blank and press ENTER for default text)",
         name: "projectQuestions"
     }
 ]).then( answers => {
-
     
     //Get and clean input
     const projectTitle = answers.projectTitle.trim();
@@ -106,6 +111,9 @@ inquirer.prompt([
         var projectTest = answers.projectTest;
     }
 
+    //Update project license
+    const projectLicense = answers.projectLicense;
+
     //Update questions
     if(answers.projectQuestions === ""){
         var projectQuestions = `[PLACEHOLDER] Remember to update this text!`
@@ -115,7 +123,7 @@ inquirer.prompt([
         var projectQuestions = answers.projectQuestions;
     }
 
-    const template = new Readme(projectTitle, projectDesc, projectInstall, projectUsage, projectContrib, projectTest, projectQuestions);
+    const template = new Readme(projectTitle, projectDesc, projectInstall, projectUsage, projectContrib, projectTest, projectLicense, projectQuestions);
         
 return [template.buildReadMe(), projectTitle]
 
