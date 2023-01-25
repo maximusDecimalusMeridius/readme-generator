@@ -49,7 +49,7 @@ ${this.projectDesc}
 - [Installation](#installation)
 - [Usage](#usage)
 - [License](#license)
-- [Contributing Information](#contributing information)
+- [Contributing](#contributing)
 - [Tests](#tests)
 - [Questions](#questions)
 
@@ -65,7 +65,7 @@ ${this.projectUsage}
 
 ${this.projectLicense} - Please refer to the LICENSE in the repo.
 
-## Contributing Information
+## Contributing
 
 ${this.projectContrib}
 

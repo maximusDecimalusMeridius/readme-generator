@@ -87,8 +87,5 @@ inquirer.prompt([
 .then(([template, projectTitle]) => {
     fs.writeFileSync(`./readmes/${projectTitle}/README.md`, template, () => {
     });
-
-})
-.then(() => {
-    console.log("success");
+    console.log(`Success! - You can find your README in ./readmes/${projectTitle}`);
 })
