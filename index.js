@@ -33,12 +33,12 @@ inquirer.prompt([
     },
     {
         type: "input",
-        message: "Please enter any contribution instructions: ('N' to skip, or leave blank and press ENTER for default text)",
+        message: "Please enter any contribution instructions: (leave blank and press ENTER for placeholder text)",
         name: "projectContrib"
     },
     {
         type: "input",
-        message: "Please enter any test instructions: ('N' to skip, or leave blank and press ENTER for default text)",
+        message: "Please enter any test instructions: (leave blank and press ENTER for placeholder text)",
         name: "projectTest"
     },
     {
