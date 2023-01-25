@@ -71,7 +71,7 @@ ${this.projectContrib}
 
 ## Tests
 
-${this.tests}
+${this.projectTest}
 
 ## Questions
 
