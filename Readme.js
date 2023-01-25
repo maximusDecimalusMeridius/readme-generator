@@ -75,7 +75,7 @@ ${this.projectTest}
 
 ## Questions
 
-You can view my Github Account @ https://www.github.com/${this.username}  
+You can view my Github @ https://www.github.com/${this.username}  
 OR  
 Email me @ [${this.email}](mailto:${this.email}?subject=Question%20About%20${this.projectTitle}%20App)
     `
